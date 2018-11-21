@@ -1,0 +1,94 @@
+{
+  "wp_theme_name": "wp-framework",
+  "wp_site_name": "wp-framework.dev",
+  "name": "wp-framework",
+  "version": "2018.09.16",
+  "description": "simple html and css framework. before run you need to install 'npm install -g gulp browserify babel jade stylus http-server'",
+  "homepage": "https://github.com/crazyyy/wp-framework#readme",
+  "author": {
+    "name": "Vitali Antoniuk",
+    "email": "crazyyy@gmail.com",
+    "url": "http://saitobaza.ru"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazyyy/wp-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crazyyy/wp-framework/issues"
+  },
+  "main": "html/index.html",
+  "keywords": [
+    "html",
+    "css",
+    "wordpress",
+    "ES5",
+    "ES6",
+    "JS",
+    "Gulp"
+  ],
+  "browser": {},
+  "scripts": {
+    "start": "SET NODE_ENV=development & gulp serve",
+    "build": "SET NODE_ENV=production & gulp serve"
+  },
+  "lintOptions": {
+    "globals": {
+      "React": false
+    },
+    "esnext": true,
+    "node": true,
+    "bitwise": true,
+    "browser": true,
+    "curly": false,
+    "eqeqeq": true,
+    "forin": true,
+    "immed": true,
+    "indent": 2,
+    "latedef": "nofunc",
+    "newcap": true,
+    "noarg": true,
+    "noempty": true,
+    "nonbsp": true,
+    "nonew": true,
+    "strict": false,
+    "globalstrict": true,
+    "sub": true,
+    "supernew": true,
+    "undef": true,
+    "unused": true
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "browser-sync": "^2.24.7",
+    "config": "^2.0.1",
+    "cssnano": "^4.1.0",
+    "gulp": "^3.9.1",
+    "gulp-filter": "^5.1.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-svg2png": "^2.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp.spritesmith": "^6.9.0",
+    "postcss-cssnext": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "gulp-babel": "^8.0.0",
+    "postcss-easysprites": "^0.1.9",
+    "run-sequence": "^2.2.1"
+  }
+}
