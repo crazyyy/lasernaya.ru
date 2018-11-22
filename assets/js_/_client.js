@@ -1076,10 +1076,10 @@ flexbe_cli.widget.register(2, {
   require: ["/js/anime.min.js"],
   $list: null,
   onLoad: function () {
-    var e = this;
-    this.$list = this.$widget.find(".anchors-list"), this.list = "object" == _typeof(this.$list.data("anchors")) && this.$list.data("anchors").list || [], this.style = this.$list.data("anchors").style || 1, this.show_title = this.$list.data("anchors").show_title, this.$list.removeAttr("data-anchors"), flexbe_cli.run.is_mobile || (this.drawList(), this.setActive(), flexbe_cli.is_admin && flexbe_cli.events.off("layout_change.anchors").on("layout_change.anchors", function (t, i) {
-      "block" === i.is && e.drawList()
-    }))
+    // var e = this;
+    // this.$list = this.$widget.find(".anchors-list"), this.list = "object" == _typeof(this.$list.data("anchors")) && this.$list.data("anchors").list || [], this.style = this.$list.data("anchors").style || 1, this.show_title = this.$list.data("anchors").show_title, this.$list.removeAttr("data-anchors"), flexbe_cli.run.is_mobile || (this.drawList(), this.setActive(), flexbe_cli.is_admin && flexbe_cli.events.off("layout_change.anchors").on("layout_change.anchors", function (t, i) {
+    //   "block" === i.is && e.drawList()
+    // }))
   },
   check: function () {
     var i = $(".b_block").not('[data-b-type*="overflow"]');

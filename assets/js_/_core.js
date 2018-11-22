@@ -473,13 +473,13 @@ flexbe_cli.stat = {
     return "modal" === e && (/form/.test(t) && (e = "modal_form"), /done/.test(t) ? e = "modal_done" : /product/.test(t) && (e = "modal_product")), this.goals[e] || !1
   },
   reach_goal: function (e, t) {
-    if (t = void 0 !== t ? t : {}, !flexbe_cli.is_admin) try {
-      if (flexbe_cli.yandex_id) var i = setInterval(function () {
-        if ("undefined" == typeof Ya || "object" !== _typeof(Ya._metrika.counter)) return !1;
-        clearInterval(i), Ya._metrika.counter.reachGoal(e, t)
-      }, 50);
-      "function" == typeof ga && ga("send", "event", e, "send")
-    } catch (e) {}
+    // if (t = void 0 !== t ? t : {}, !flexbe_cli.is_admin) try {
+    //   if (flexbe_cli.yandex_id) var i = setInterval(function () {
+    //     if ("undefined" == typeof Ya || "object" !== _typeof(Ya._metrika.counter)) return !1;
+    //     clearInterval(i), Ya._metrika.counter.reachGoal(e, t)
+    //   }, 50);
+    //   "function" == typeof ga && ga("send", "event", e, "send")
+    // } catch (e) {}
   },
   ecommerce: {
     currencyCodes: {
@@ -1944,222 +1944,222 @@ function _inheritsLoose(t, e) {
   flexbe_cli.components.classes.button = t
 }();
 
-function _inheritsLoose(e, o) {
-  e.prototype = Object.create(o.prototype), (e.prototype.constructor = e).__proto__ = o
-}! function () {
-  var e = function (a) {
-      function e() {
-        for (var e, o = arguments.length, t = new Array(o), n = 0; n < o; n++) t[n] = arguments[n];
-        return (e = a.call.apply(a, [this].concat(t)) || this).is = "map", e.$map = e.$component, e.data = e.$component.data("data"), e.$component.removeAttr("data-data"), e
-      }
-      _inheritsLoose(e, a);
-      var o = e.prototype;
-      return o.onInit = function () {
-        this.isUpdated && this.isLoaded && this.createMap()
-      }, o.onLoad = function () {
-        (this.inView || this.inBeside) && this.createMap()
-      }, o.onView = function (e) {
-        var o = e.state;
-        if (!this.isLoaded) return !1;
-        !o || this.isViewed || this.isBesided || this.createMap()
-      }, o.onBeside = function (e) {
-        var o = e.state;
-        if (!this.isLoaded) return !1;
-        !o || this.isViewed || this.isBesided || this.createMap()
-      }, o.createMap = function () {}, e
-    }(BaseComponent),
-    t = function (a) {
-      function e() {
-        for (var e, o = arguments.length, t = new Array(o), n = 0; n < o; n++) t[n] = arguments[n];
-        return (e = a.call.apply(a, [this].concat(t)) || this).require = ["//api-maps.yandex.ru/2.1/?lang=ru_RU"], e
-      }
-      _inheritsLoose(e, a);
-      var o = e.prototype;
-      return o.onResize = function () {
-        var e = this.map;
-        e && e.container.fitToViewport()
-      }, o.createMap = function () {
-        var e = this;
-        "undefined" != typeof ymaps && ymaps.ready(function () {
-          e.createVendor(), e.setPlaces(), e.dispatchEvents(), e.fixBehavior(), e.$component.trigger("mapInit"), e.$component.removeClass("loading")
-        })
-      }, o.createVendor = function () {
-        this.map && this.map.destroy(), this.map = new ymaps.Map(this.$component.find(".map")[0], {
-          center: this.data.center,
-          zoom: this.data.zoom,
-          controls: ["zoomControl"],
-          behaviors: ["default", "scrollZoom"],
-          type: "yandex#map"
-        })
-      }, o.setPlaces = function () {
-        var n = this,
-          a = this.map,
-          e = this.data;
-        if (a) {
-          a.geoObjects.removeAll();
-          var o = ymaps.templateLayoutFactory.createClass('<svg title="$[properties.balloonContent]" class="placemark" width="32" height="48" viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.36 0 0 5.36 0 12c0 8 12 20 12 20s12-12 12-20c0-6.64-5.36-12-12-12zm0 8a4 4 0 0 1 4 4c0 2.22-1.78 4-4 4a4 4 0 0 1-4-4c0-2.2 1.8-4 4-4z" fill="$[properties.color]" fill-rule="evenodd"/></svg>');
-          ymaps.layout.storage.get("custom#placemark") || ymaps.layout.storage.add("custom#placemark", o), e.places.forEach(function (e, o) {
-            e.color = e.color || "#3D52B0";
-            var t = new ymaps.Placemark(e.coords, {
-              balloonContentHeader: e.name || !1,
-              balloonContent: e.address,
-              color: e.color
-            }, {
-              hideIconOnBalloonOpen: !1,
-              balloonOffset: [0, -48],
-              balloonCloseButton: !1,
-              iconLayout: "custom#placemark",
-              iconShape: {
-                type: "Rectangle",
-                coordinates: [
-                  [-16, -48],
-                  [16, 0]
-                ]
-              }
-            });
-            t.events.add("balloonopen", function () {
-              n.$component.trigger("balloonOpen", o, e)
-            }), a.geoObjects.add(t), e._mark = t
-          })
-        }
-      }, o.dispatchEvents = function () {
-        var n = this.data,
-          a = this.map;
-        a && (this.$component.on("selectMark", function (e, o) {
-          if (n.places.length && n.places[o]) {
-            var t = n.places[o];
-            a.setCenter(t.coords, n.zoom, {
-              duration: 350,
-              checkZoomRange: !0
-            }).then(function () {
-              a.setCenter(t.coords)
-            }), t._mark && t._mark.balloon.open()
-          }
-        }), this.$component.on("resizeMap", function () {
-          a.container.fitToViewport()
-        }))
-      }, o.fixBehavior = function () {
-        var e, o = this.map;
-        o && (o.behaviors.disable("scrollZoom"), this.$component.off("mouseenter.preventzoom").on("mouseenter.preventzoom", function () {
-          e = setTimeout(function () {
-            o.behaviors.enable("scrollZoom")
-          }, 500)
-        }), this.$component.off("mouseleave.preventzoom").on("mouseleave.preventzoom", function () {
-          e && (clearTimeout(e), o.behaviors.disable("scrollZoom"))
-        }), flexbe_cli.run.is_mobile && o.behaviors.disable("drag"))
-      }, e
-    }(e),
-    n = function (i) {
-      function e() {
-        for (var e, o = arguments.length, t = new Array(o), n = 0; n < o; n++) t[n] = arguments[n];
-        e = i.call.apply(i, [this].concat(t)) || this;
-        var a = flexbe_cli.google_maps_api_key || "AIzaSyBZ5MufayEgZaNJ-dDo6epfouAZr5wATEs";
-        return e.require = ["//maps.googleapis.com/maps/api/js?key=" + a], e
-      }
-      _inheritsLoose(e, i);
-      var o = e.prototype;
-      return o.createMap = function () {
-        "undefined" != typeof google && (this.createVendor(), this.styleMap(), this.setPlaces(), this.dispatchEvents(), this.fixBehavior(), this.$component.trigger("mapInit"), this.$component.removeClass("loading"))
-      }, o.createVendor = function () {
-        var e = this.data;
-        this.map = new google.maps.Map(this.$component.find(".map")[0], {
-          center: {
-            lat: e.center[0],
-            lng: e.center[1]
-          },
-          zoom: e.zoom,
-          disableDefaultUI: !0,
-          panControl: !0,
-          zoomControl: !0,
-          mapTypeControl: !1,
-          streetViewControl: !1,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          scrollwheel: !1
-        })
-      }, o.dispatchEvents = function () {
-        var t = this,
-          e = this.$component,
-          o = this.map;
-        o && (e.on("selectMark", function (e, o) {
-          t.selectMark(o, !0)
-        }), e.on("resizeMap", function () {
-          google.maps.event.trigger(o, "resize")
-        }))
-      }, o.setPlaces = function () {
-        var a = this,
-          e = this.data,
-          i = this.map;
-        i && e.places.forEach(function (e, o) {
-          var t = '<svg width="32" height="48" viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.36 0 0 5.36 0 12c0 8 12 20 12 20s12-12 12-20c0-6.64-5.36-12-12-12zm0 8a4 4 0 0 1 4 4c0 2.22-1.78 4-4 4a4 4 0 0 1-4-4c0-2.2 1.8-4 4-4z" fill="' + (e.color || "#222") + '" fill-rule="evenodd"/></svg>',
-            n = new google.maps.Marker({
-              position: {
-                lat: e.coords[0],
-                lng: e.coords[1]
-              },
-              map: i,
-              visible: !0,
-              animation: google.maps.Animation.DROP,
-              icon: {
-                url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(t)
-              }
-            });
-          (e._mark = n).addListener("click", function () {
-            a.selectMark(o)
-          })
-        })
-      }, o.styleMap = function () {
-        var e = this.data,
-          o = this.map;
-        if (o)
-          if ("default" !== e.style && e.style) {
-            var t = "/_s/lib/google/maps/styles/" + e.style + ".json";
-            $.getJSON(t, function (e) {
-              e && Array.isArray(e) && o.setOptions({
-                styles: e
-              })
-            })
-          } else o.setOptions({
-            styles: []
-          })
-      }, o.selectMark = function (e, o) {
-        void 0 === o && (o = !1);
-        var t = this.data,
-          n = this.map,
-          a = t.places;
-        if (n && a && a.length && a[e]) {
-          a.forEach(function (e) {
-            return e._info && e._info.close()
-          });
-          var i = a[e],
-            s = "";
-          i.name && (s += '<div style="margin-bottom: 3px;"><strong>' + i.name + "</strong></div>"), i.address && (s += "<div>" + i.address + "</div>"), i._info = new google.maps.InfoWindow({
-            content: s
-          }), i._info.open(n, i._mark), o && n.panTo({
-            lat: i.coords[0],
-            lng: i.coords[1]
-          }), this.$component.trigger("balloonOpen", e, i)
-        }
-      }, o.fixBehavior = function () {
-        var e, o = this.$component,
-          t = this.map;
-        t && (o.off("mouseenter.preventzoom").on("mouseenter.preventzoom", function () {
-          e = setTimeout(function () {
-            t.setOptions({
-              scrollwheel: !0
-            })
-          }, 500)
-        }), o.off("mouseleave.preventzoom").on("mouseleave.preventzoom", function () {
-          e && (clearTimeout(e), t.setOptions({
-            scrollwheel: !1
-          }))
-        }))
-      }, e
-    }(e);
-  flexbe_cli.components.classes.map = function (e) {
-    var o = e.args[0] || "yandex";
-    return "google" === o && !flexbe_cli.is_admin && String(flexbe_cli.google_maps_api_key.length) < 32 && (o = "yandex"), new("google" === o ? n : t)(e)
-  }
-}();
+// function _inheritsLoose(e, o) {
+//   e.prototype = Object.create(o.prototype), (e.prototype.constructor = e).__proto__ = o
+// }! function () {
+//   var e = function (a) {
+//       function e() {
+//         for (var e, o = arguments.length, t = new Array(o), n = 0; n < o; n++) t[n] = arguments[n];
+//         return (e = a.call.apply(a, [this].concat(t)) || this).is = "map", e.$map = e.$component, e.data = e.$component.data("data"), e.$component.removeAttr("data-data"), e
+//       }
+//       _inheritsLoose(e, a);
+//       var o = e.prototype;
+//       return o.onInit = function () {
+//         this.isUpdated && this.isLoaded && this.createMap()
+//       }, o.onLoad = function () {
+//         (this.inView || this.inBeside) && this.createMap()
+//       }, o.onView = function (e) {
+//         var o = e.state;
+//         if (!this.isLoaded) return !1;
+//         !o || this.isViewed || this.isBesided || this.createMap()
+//       }, o.onBeside = function (e) {
+//         var o = e.state;
+//         if (!this.isLoaded) return !1;
+//         !o || this.isViewed || this.isBesided || this.createMap()
+//       }, o.createMap = function () {}, e
+//     }(BaseComponent),
+//     t = function (a) {
+//       function e() {
+//         for (var e, o = arguments.length, t = new Array(o), n = 0; n < o; n++) t[n] = arguments[n];
+//         return (e = a.call.apply(a, [this].concat(t)) || this).require = ["//api-maps.yandex.ru/2.1/?lang=ru_RU"], e
+//       }
+//       _inheritsLoose(e, a);
+//       var o = e.prototype;
+//       return o.onResize = function () {
+//         var e = this.map;
+//         e && e.container.fitToViewport()
+//       }, o.createMap = function () {
+//         var e = this;
+//         "undefined" != typeof ymaps && ymaps.ready(function () {
+//           e.createVendor(), e.setPlaces(), e.dispatchEvents(), e.fixBehavior(), e.$component.trigger("mapInit"), e.$component.removeClass("loading")
+//         })
+//       }, o.createVendor = function () {
+//         this.map && this.map.destroy(), this.map = new ymaps.Map(this.$component.find(".map")[0], {
+//           center: this.data.center,
+//           zoom: this.data.zoom,
+//           controls: ["zoomControl"],
+//           behaviors: ["default", "scrollZoom"],
+//           type: "yandex#map"
+//         })
+//       }, o.setPlaces = function () {
+//         var n = this,
+//           a = this.map,
+//           e = this.data;
+//         if (a) {
+//           // a.geoObjects.removeAll();
+//           // var o = ymaps.templateLayoutFactory.createClass('<svg title="$[properties.balloonContent]" class="placemark" width="32" height="48" viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.36 0 0 5.36 0 12c0 8 12 20 12 20s12-12 12-20c0-6.64-5.36-12-12-12zm0 8a4 4 0 0 1 4 4c0 2.22-1.78 4-4 4a4 4 0 0 1-4-4c0-2.2 1.8-4 4-4z" fill="$[properties.color]" fill-rule="evenodd"/></svg>');
+//           // ymaps.layout.storage.get("custom#placemark") || ymaps.layout.storage.add("custom#placemark", o), e.places.forEach(function (e, o) {
+//           //   e.color = e.color || "#3D52B0";
+//           //   var t = new ymaps.Placemark(e.coords, {
+//           //     balloonContentHeader: e.name || !1,
+//           //     balloonContent: e.address,
+//           //     color: e.color
+//           //   }, {
+//           //     hideIconOnBalloonOpen: !1,
+//           //     balloonOffset: [0, -48],
+//           //     balloonCloseButton: !1,
+//           //     iconLayout: "custom#placemark",
+//           //     iconShape: {
+//           //       type: "Rectangle",
+//           //       coordinates: [
+//           //         [-16, -48],
+//           //         [16, 0]
+//           //       ]
+//           //     }
+//           //   });
+//           //   t.events.add("balloonopen", function () {
+//           //     n.$component.trigger("balloonOpen", o, e)
+//           //   }), a.geoObjects.add(t), e._mark = t
+//           // })
+//         }
+//       }, o.dispatchEvents = function () {
+//         var n = this.data,
+//           a = this.map;
+//         a && (this.$component.on("selectMark", function (e, o) {
+//           if (n.places.length && n.places[o]) {
+//             var t = n.places[o];
+//             a.setCenter(t.coords, n.zoom, {
+//               duration: 350,
+//               checkZoomRange: !0
+//             }).then(function () {
+//               a.setCenter(t.coords)
+//             }), t._mark && t._mark.balloon.open()
+//           }
+//         }), this.$component.on("resizeMap", function () {
+//           a.container.fitToViewport()
+//         }))
+//       }, o.fixBehavior = function () {
+//         var e, o = this.map;
+//         o && (o.behaviors.disable("scrollZoom"), this.$component.off("mouseenter.preventzoom").on("mouseenter.preventzoom", function () {
+//           e = setTimeout(function () {
+//             o.behaviors.enable("scrollZoom")
+//           }, 500)
+//         }), this.$component.off("mouseleave.preventzoom").on("mouseleave.preventzoom", function () {
+//           e && (clearTimeout(e), o.behaviors.disable("scrollZoom"))
+//         }), flexbe_cli.run.is_mobile && o.behaviors.disable("drag"))
+//       }, e
+//     }(e),
+//     n = function (i) {
+//       function e() {
+//         for (var e, o = arguments.length, t = new Array(o), n = 0; n < o; n++) t[n] = arguments[n];
+//         e = i.call.apply(i, [this].concat(t)) || this;
+//         var a = flexbe_cli.google_maps_api_key || "AIzaSyBZ5MufayEgZaNJ-dDo6epfouAZr5wATEs";
+//         return e.require = ["//maps.googleapis.com/maps/api/js?key=" + a], e
+//       }
+//       _inheritsLoose(e, i);
+//       var o = e.prototype;
+//       return o.createMap = function () {
+//         "undefined" != typeof google && (this.createVendor(), this.styleMap(), this.setPlaces(), this.dispatchEvents(), this.fixBehavior(), this.$component.trigger("mapInit"), this.$component.removeClass("loading"))
+//       }, o.createVendor = function () {
+//         var e = this.data;
+//         this.map = new google.maps.Map(this.$component.find(".map")[0], {
+//           center: {
+//             lat: e.center[0],
+//             lng: e.center[1]
+//           },
+//           zoom: e.zoom,
+//           disableDefaultUI: !0,
+//           panControl: !0,
+//           zoomControl: !0,
+//           mapTypeControl: !1,
+//           streetViewControl: !1,
+//           mapTypeId: google.maps.MapTypeId.ROADMAP,
+//           scrollwheel: !1
+//         })
+//       }, o.dispatchEvents = function () {
+//         var t = this,
+//           e = this.$component,
+//           o = this.map;
+//         o && (e.on("selectMark", function (e, o) {
+//           t.selectMark(o, !0)
+//         }), e.on("resizeMap", function () {
+//           google.maps.event.trigger(o, "resize")
+//         }))
+//       }, o.setPlaces = function () {
+//         var a = this,
+//           e = this.data,
+//           i = this.map;
+//         i && e.places.forEach(function (e, o) {
+//           var t = '<svg width="32" height="48" viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.36 0 0 5.36 0 12c0 8 12 20 12 20s12-12 12-20c0-6.64-5.36-12-12-12zm0 8a4 4 0 0 1 4 4c0 2.22-1.78 4-4 4a4 4 0 0 1-4-4c0-2.2 1.8-4 4-4z" fill="' + (e.color || "#222") + '" fill-rule="evenodd"/></svg>',
+//             n = new google.maps.Marker({
+//               position: {
+//                 lat: e.coords[0],
+//                 lng: e.coords[1]
+//               },
+//               map: i,
+//               visible: !0,
+//               animation: google.maps.Animation.DROP,
+//               icon: {
+//                 url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(t)
+//               }
+//             });
+//           (e._mark = n).addListener("click", function () {
+//             a.selectMark(o)
+//           })
+//         })
+//       }, o.styleMap = function () {
+//         var e = this.data,
+//           o = this.map;
+//         if (o)
+//           if ("default" !== e.style && e.style) {
+//             var t = "/_s/lib/google/maps/styles/" + e.style + ".json";
+//             $.getJSON(t, function (e) {
+//               e && Array.isArray(e) && o.setOptions({
+//                 styles: e
+//               })
+//             })
+//           } else o.setOptions({
+//             styles: []
+//           })
+//       }, o.selectMark = function (e, o) {
+//         void 0 === o && (o = !1);
+//         var t = this.data,
+//           n = this.map,
+//           a = t.places;
+//         if (n && a && a.length && a[e]) {
+//           a.forEach(function (e) {
+//             return e._info && e._info.close()
+//           });
+//           var i = a[e],
+//             s = "";
+//           i.name && (s += '<div style="margin-bottom: 3px;"><strong>' + i.name + "</strong></div>"), i.address && (s += "<div>" + i.address + "</div>"), i._info = new google.maps.InfoWindow({
+//             content: s
+//           }), i._info.open(n, i._mark), o && n.panTo({
+//             lat: i.coords[0],
+//             lng: i.coords[1]
+//           }), this.$component.trigger("balloonOpen", e, i)
+//         }
+//       }, o.fixBehavior = function () {
+//         var e, o = this.$component,
+//           t = this.map;
+//         t && (o.off("mouseenter.preventzoom").on("mouseenter.preventzoom", function () {
+//           e = setTimeout(function () {
+//             t.setOptions({
+//               scrollwheel: !0
+//             })
+//           }, 500)
+//         }), o.off("mouseleave.preventzoom").on("mouseleave.preventzoom", function () {
+//           e && (clearTimeout(e), t.setOptions({
+//             scrollwheel: !1
+//           }))
+//         }))
+//       }, e
+//     }(e);
+//   flexbe_cli.components.classes.map = function (e) {
+//     var o = e.args[0] || "yandex";
+//     return "google" === o && !flexbe_cli.is_admin && String(flexbe_cli.google_maps_api_key.length) < 32 && (o = "yandex"), new("google" === o ? n : t)(e)
+//   }
+// }();
 
 function _typeof(e) {
   return (_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
