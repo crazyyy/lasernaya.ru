@@ -174,41 +174,41 @@ flexbe_cli.block.register(107, {
 
 
 flexbe_cli.block.register(111, {
-  mapInit: !1,
-  index: !1,
-  onLoad: function () {
-    var t = this;
-    this.$map = $(".component-map", this.$block), this.$map.length ? this.initMap() : setTimeout(function () {
-      t.onLoad()
-    }, 50)
-  },
-  initMap: function () {
-    var a = this;
-    if (this.data = this.$map.data("data"), this.$map.on("mapInit", function () {
-        a.mapInit = !0, a.selectMark(a.index || 0, !0)
-      }), this.$block.find(".tab-list").on("click", "a", function (t) {
-        var i = parseInt($(t.currentTarget).closest(".tab").attr("data-item-id"), 10) - 1;
-        a.selectMark(i)
-      }), this.$map.on("balloonOpen", function (t, i) {
-        a.selectMark(i)
-      }), flexbe_cli.is_admin) {
-      var i = this.$map[0].offsetHeight;
-      clearInterval(this.timer), this.timer = setInterval(function () {
-        var t = a.$map[0].offsetHeight;
-        t != i && (i = t, a.$map.trigger("resizeMap"))
-      }, 100)
-    }
-  },
-  selectMark: function (t, i) {
-    void 0 === i && (i = !1);
-    var a = this.data.places[t];
-    if (a && (this.index != t || i)) {
-      this.index = t;
-      var e = this.$block.find(".tab-list"),
-        s = this.$block.find(".item-list");
-      e.find(".active").removeClass("active"), s.find(".active").removeClass("active"), e.find('[data-item-id="' + (this.index + 1) + '"]').addClass("active"), s.find('[data-item-id="' + (this.index + 1) + '"]').addClass("active"), this.data.center = a.coords, this.$map.trigger("selectMark", this.index)
-    }
-  }
+  // mapInit: !1,
+  // index: !1,
+  // onLoad: function () {
+  //   var t = this;
+  //   this.$map = $(".component-map", this.$block), this.$map.length ? this.initMap() : setTimeout(function () {
+  //     t.onLoad()
+  //   }, 50)
+  // },
+  // initMap: function () {
+  //   var a = this;
+  //   if (this.data = this.$map.data("data"), this.$map.on("mapInit", function () {
+  //       a.mapInit = !0, a.selectMark(a.index || 0, !0)
+  //     }), this.$block.find(".tab-list").on("click", "a", function (t) {
+  //       var i = parseInt($(t.currentTarget).closest(".tab").attr("data-item-id"), 10) - 1;
+  //       a.selectMark(i)
+  //     }), this.$map.on("balloonOpen", function (t, i) {
+  //       a.selectMark(i)
+  //     }), flexbe_cli.is_admin) {
+  //     var i = this.$map[0].offsetHeight;
+  //     clearInterval(this.timer), this.timer = setInterval(function () {
+  //       var t = a.$map[0].offsetHeight;
+  //       t != i && (i = t, a.$map.trigger("resizeMap"))
+  //     }, 100)
+  //   }
+  // },
+  // selectMark: function (t, i) {
+  //   void 0 === i && (i = !1);
+  //   var a = this.data.places[t];
+  //   if (a && (this.index != t || i)) {
+  //     this.index = t;
+  //     var e = this.$block.find(".tab-list"),
+  //       s = this.$block.find(".item-list");
+  //     e.find(".active").removeClass("active"), s.find(".active").removeClass("active"), e.find('[data-item-id="' + (this.index + 1) + '"]').addClass("active"), s.find('[data-item-id="' + (this.index + 1) + '"]').addClass("active"), this.data.center = a.coords, this.$map.trigger("selectMark", this.index)
+  //   }
+  // }
 });
 flexbe_cli.block.register(112, {
   onLoad: function () {

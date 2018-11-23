@@ -9851,4 +9851,82 @@ body .text-style-quote {
   font-family: "Bad Script", Helvetica, Verdana, sans-serif;
 }
 
+[data-b-id="13"][data-id="94155"] .component-bg .image {
+  background-image: none;
+  position: relative;
+}
+
+[data-b-id="13"][data-id="94155"] .component-bg .image::after {
+  /* Display and position the pseudo-element */
+  content: " ";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  left: 0;
+  background-image: url(../img/first-image-bg.jpg);
+  background-position: center;
+  /* Move the pseudo-element back away from the camera,
+   * then scale it back up to fill the viewport.
+   * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
+  transform: translateZ(-1px) scale(1.5);
+  /* Force the background image to fill the whole element. */
+  background-size: cover;
+  /* Keep the image from overlapping sibling elements. */
+  z-index: -1;
+}
+
+i.icoss {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+i.icoss.ico-power {
+  background-image: url(../img/ico-power.png);
+}
+
+i.icoss.ico-speed {
+  background-image: url(../img/ico-speed.png);
+}
+
+i.icoss.ico-weight {
+  background-image: url(../img/ico-weight.png);
+}
+
+i.icoss.ico-whatsapp, i.icoss.ico-viber {
+  text-decoration: none;
+  width: 20px;
+  height: 20px;
+}
+
+i.icoss.ico-whatsapp {
+  background-image: url(../img/ico-whatsapp.png);
+}
+
+i.icoss.ico-viber {
+  background-image: url(../img/ico-viber.png);
+}
+
+.ico-margin {
+  text-decoration: none;
+  margin-right: 10px;
+  text-decoration-color: transparent;
+}
+
+.ico-margin i {
+  text-decoration: none;
+}
+
+[data-b-id="111"] .component-map {
+  top: 0;
+}
+
+.component-map .map {
+  display: none;
+}
+
 /*# sourceMappingURL=maps/main.css.map */

@@ -48,17 +48,20 @@ if (typeof jQuery === "undefined") {
 }
 // Place any jQuery/helper plugins in here.
 $(document).ready(function() {
-  // $('.slide').each(function (indexInArray, valueOfElement) {
-  //   var img = $(this).attr('data-thumb');
-  //   $(this).find('img').attr('src', img);
-  //   var bgi = 'url("' + img + '");';
-  //   $(this).find('.component-image').css({
-  //     'background-image' : bgi,
-  //     'background-position':  '50% 50%;'
-  //   });
+  $('.map-overlay .component-button').on('click', function(e){
+    // var $parent = $(this).parent();
+    // if ($parent.hasClass('active')) {
+    // } else {
+    //   console.log('inactive');
+    //   $('.tab-list .active').removeClass('active');
+    //   $parent.addClass('active');
+    // }
 
-  // })
+    $('.tab-list .tab, .item-list .item').each(function( index ) {
+      $(this).toggleClass('active');
+      $(this).toggleClass('inactive');
+    });
 
-
+  })
 
 })

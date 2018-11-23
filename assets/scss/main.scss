@@ -12,3 +12,75 @@ body .text-style-title { font-family: "Ubuntu Condensed", Helvetica, Verdana, sa
 body .text-style-subtitle { font-family: Ubuntu, Helvetica, Verdana, sans-serif }
 body { font-family: Ubuntu, Helvetica, Verdana, sans-serif !important }
 body .text-style-quote { font-family: "Bad Script", Helvetica, Verdana, sans-serif }
+
+[data-b-id="13"][data-id="94155"] .component-bg .image {
+  background-image: none;
+  position: relative;
+}
+
+[data-b-id="13"][data-id="94155"] .component-bg .image::after {
+  /* Display and position the pseudo-element */
+  content: " ";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+
+  left: 0;
+  background-image: url(../img/first-image-bg.jpg);
+  background-position: center;
+  /* Move the pseudo-element back away from the camera,
+   * then scale it back up to fill the viewport.
+   * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
+  transform: translateZ(-1px) scale(1.5);
+  /* Force the background image to fill the whole element. */
+  background-size: cover;
+  /* Keep the image from overlapping sibling elements. */
+  z-index: -1;
+}
+
+i.icoss {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &.ico-power {
+    background-image: url(../img/ico-power.png);
+  }
+  &.ico-speed {
+    background-image: url(../img/ico-speed.png);
+  }
+  &.ico-weight {
+    background-image: url(../img/ico-weight.png);
+  }
+  &.ico-whatsapp,
+  &.ico-viber {
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+  }
+  &.ico-whatsapp {
+    background-image: url(../img/ico-whatsapp.png);
+  }
+  &.ico-viber {
+    background-image: url(../img/ico-viber.png);
+  }
+}
+.ico-margin {
+  text-decoration: none;
+  margin-right: 10px;
+  text-decoration-color: transparent;
+  i {
+    text-decoration: none;
+  }
+}
+
+[data-b-id="111"] .component-map {
+  top: 0;
+}
+
+.component-map .map {
+  display: none;
+}
