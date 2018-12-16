@@ -464,10 +464,10 @@ flexbe_cli.stat = {
     close: "modal_close"
   },
   init: function () {
-    var e = getCookie("user_id");
-    if (flexbe_cli.is_admin || flexbe_cli.run.is_bot || flexbe_cli.run.is_screenshoter || !flexbe_cli.p_id || e) return !1;
-    var t = getCookie("f_uid");
-    t ? (this.u_id = t, this.user_visit()) : this.user_create(), this.AB.init(), this.ecommerce.init()
+    // var e = getCookie("user_id");
+    // if (flexbe_cli.is_admin || flexbe_cli.run.is_bot || flexbe_cli.run.is_screenshoter || !flexbe_cli.p_id || e) return !1;
+    // var t = getCookie("f_uid");
+    // t ? (this.u_id = t, this.user_visit()) : this.user_create(), this.AB.init(), this.ecommerce.init()
   },
   getGoal: function (e, t) {
     return "modal" === e && (/form/.test(t) && (e = "modal_form"), /done/.test(t) ? e = "modal_done" : /product/.test(t) && (e = "modal_product")), this.goals[e] || !1
@@ -582,103 +582,103 @@ flexbe_cli.stat = {
     }), document.referrer && (i.url = document.referrer), i
   },
   user_create: function () {
-    var t = this;
-    $.ajax({
-      url: "/mod/stat/",
-      type: "POST",
-      dataType: "json",
-      data: {
-        s_id: flexbe_cli.s_id,
-        group_id: flexbe_cli.group_id,
-        p_id: flexbe_cli.p_id,
-        utm_data: this.get_utm(),
-        device: {
-          type: flexbe_cli.run.device_type,
-          width: window.innerWidth,
-          browser: navigator.userAgent
-        }
-      }
-    }).done(function (e) {
-      "object" == _typeof(e) && null !== e && e.u_id ? (setCookie("f_uid", e.u_id, {
-        Path: "/"
-      }), t.u_id = e.u_id) : console.warn("cookie не установлена", e)
-    })
+    // var t = this;
+    // $.ajax({
+    //   url: "/mod/stat/",
+    //   type: "POST",
+    //   dataType: "json",
+    //   data: {
+    //     s_id: flexbe_cli.s_id,
+    //     group_id: flexbe_cli.group_id,
+    //     p_id: flexbe_cli.p_id,
+    //     utm_data: this.get_utm(),
+    //     device: {
+    //       type: flexbe_cli.run.device_type,
+    //       width: window.innerWidth,
+    //       browser: navigator.userAgent
+    //     }
+    //   }
+    // }).done(function (e) {
+    //   "object" == _typeof(e) && null !== e && e.u_id ? (setCookie("f_uid", e.u_id, {
+    //     Path: "/"
+    //   }), t.u_id = e.u_id) : console.warn("cookie не установлена", e)
+    // })
   },
   user_visit: function () {
-    $.ajax({
-      url: "/mod/stat/visit/",
-      type: "POST",
-      dataType: "json",
-      data: {
-        s_id: flexbe_cli.s_id,
-        group_id: flexbe_cli.group_id,
-        p_id: flexbe_cli.p_id,
-        u_id: this.u_id
-      }
-    }).done($.proxy(function (e) {
-      e.v_id || console.warn("cookie визита не установлена", e)
-    }, this))
-  },
-  AB: {
-    init: function () {
-      var o = this;
-      flexbe_cli.events.off("entity_event.abstat").on("entity_event.abstat", function (e, t) {
-        if (t && "screen" === t.type && t.state && t.core && "block" === t.core.is) {
-          var i = t.core.$area;
-          o.fixview(i.attr("data-abtest-id"), i.attr("data-abtest-variant"))
-        }
-      })
-    },
-    setcookie: function (e) {
-      setCookie("f_ab", JSON.stringify(e), {
-        expires: 604800,
-        path: "/",
-        domain: document.location.hostname
-      })
-    },
-    getcookie: function () {
-      var t = !0,
-        e = getCookie("f_ab");
-      if (e) try {
-        e = JSON.parse(decodeURIComponent(e)), t = !1
-      } catch (e) {
-        console.warn("cant parse abtest cookie", e), t = !0
-      }
-      return t && (e = {
-        view: {},
-        lead: []
-      }), e
-    },
-    proccess: {},
-    fixview: function (i, o) {
-      if (void 0 === i || void 0 === o || "a" != o && "b" != o) return !1;
-      void 0 !== this.getcookie().view[i] || this.proccess[i] || (this.proccess[i] = !0, $.ajax({
-        url: "/mod/stat/abtest",
-        type: "POST",
-        dataType: "json",
-        data: {
-          test_id: i,
-          variant: o,
-          s_id: flexbe_cli.s_id,
-          p_id: flexbe_cli.p_id
-        }
-      }).done($.proxy(function (e) {
-        if (this.proccess[i] = !1, 1 == e.status) {
-          var t = flexbe_cli.stat.AB.getcookie();
-          t.view[i] = o, flexbe_cli.stat.AB.setcookie(t)
-        }
-      }, this)))
-    },
-    fixlead: function (e) {
-      if (flexbe_cli.bill && 1 != flexbe_cli.bill.abtest) return !1;
-      if (0 < e.length) {
-        var t = this.getcookie(),
-          i = $.merge(t.lead, e);
-        t.lead = $.grep(i, function (e, t) {
-          return $.inArray(e, i) === t
-        }), this.setcookie(t)
-      }
-    }
+  //   $.ajax({
+  //     url: "/mod/stat/visit/",
+  //     type: "POST",
+  //     dataType: "json",
+  //     data: {
+  //       s_id: flexbe_cli.s_id,
+  //       group_id: flexbe_cli.group_id,
+  //       p_id: flexbe_cli.p_id,
+  //       u_id: this.u_id
+  //     }
+  //   }).done($.proxy(function (e) {
+  //     e.v_id || console.warn("cookie визита не установлена", e)
+  //   }, this))
+  // },
+  // AB: {
+  //   init: function () {
+  //     var o = this;
+  //     flexbe_cli.events.off("entity_event.abstat").on("entity_event.abstat", function (e, t) {
+  //       if (t && "screen" === t.type && t.state && t.core && "block" === t.core.is) {
+  //         var i = t.core.$area;
+  //         o.fixview(i.attr("data-abtest-id"), i.attr("data-abtest-variant"))
+  //       }
+  //     })
+  //   },
+  //   setcookie: function (e) {
+  //     setCookie("f_ab", JSON.stringify(e), {
+  //       expires: 604800,
+  //       path: "/",
+  //       domain: document.location.hostname
+  //     })
+  //   },
+  //   getcookie: function () {
+  //     var t = !0,
+  //       e = getCookie("f_ab");
+  //     if (e) try {
+  //       e = JSON.parse(decodeURIComponent(e)), t = !1
+  //     } catch (e) {
+  //       console.warn("cant parse abtest cookie", e), t = !0
+  //     }
+  //     return t && (e = {
+  //       view: {},
+  //       lead: []
+  //     }), e
+  //   },
+  //   proccess: {},
+  //   fixview: function (i, o) {
+  //     if (void 0 === i || void 0 === o || "a" != o && "b" != o) return !1;
+  //     void 0 !== this.getcookie().view[i] || this.proccess[i] || (this.proccess[i] = !0, $.ajax({
+  //       url: "/mod/stat/abtest",
+  //       type: "POST",
+  //       dataType: "json",
+  //       data: {
+  //         test_id: i,
+  //         variant: o,
+  //         s_id: flexbe_cli.s_id,
+  //         p_id: flexbe_cli.p_id
+  //       }
+  //     }).done($.proxy(function (e) {
+  //       if (this.proccess[i] = !1, 1 == e.status) {
+  //         var t = flexbe_cli.stat.AB.getcookie();
+  //         t.view[i] = o, flexbe_cli.stat.AB.setcookie(t)
+  //       }
+  //     }, this)))
+  //   },
+  //   fixlead: function (e) {
+  //     if (flexbe_cli.bill && 1 != flexbe_cli.bill.abtest) return !1;
+  //     if (0 < e.length) {
+  //       var t = this.getcookie(),
+  //         i = $.merge(t.lead, e);
+  //       t.lead = $.grep(i, function (e, t) {
+  //         return $.inArray(e, i) === t
+  //       }), this.setcookie(t)
+  //     }
+  //   }
   }
 };
 
@@ -2359,23 +2359,29 @@ function _inheritsLoose(e, t) {
             "object" === _typeof(l) && l instanceof File && 0 === l.size && e.delete(r)
           }
         }
-        e.append("f_ab", JSON.stringify(flexbe_cli.stat.AB.getcookie())), this.$component.addClass("submitting");
-        var d = $.ajax({
+        /*e.append("f_ab", JSON.stringify(flexbe_cli.stat.AB.getcookie())),*/ this.$component.addClass("submitting");
+        $.ajax({
           url: this.$form.attr("action"),
           type: "POST",
           dataType: "json",
+          cache : false,
           processData: !1,
           contentType: !1,
           data: e,
           xhr: function () {
-            return $.ajaxSettings.xhr()
+            var e = $.ajaxSettings.xhr();
+            return e.upload, e
           }
-        });
-        d.done(function (e) {
-          t.$component.addClass("success submit-ok"), t.$component.removeClass("submitting"), e.send_formdata = !0, void 0 !== e.pay && (t.pay = e.pay), t.showDone(), setTimeout(function () {
+        }).always(function (e) {
+          t.$component.addClass("success submit-ok"),
+          t.$component.removeClass("submitting"),
+          e.send_formdata = !0, void 0 !== e.pay && (t.pay = e.pay),
+          t.showDone(), setTimeout(function () {
             t.$component.removeClass("success submit-ok")
           }, 1e3)
-        }), d.fail(function (e) {
+        }).done(function (e) {
+          // console.log('done');
+        }).fail(function (e) {
           console.error("sendFormdata error: ", e), t.busy = !1, t.$component.removeClass("submitting")
         })
       }, t.sendAjax = function () {
@@ -2449,15 +2455,19 @@ function _inheritsLoose(e, t) {
             flexbe_cli.modal.close(), document.location = a
           }, 500)
         } else {
-          var o = this.$component.find("[data-modal-id]").attr("data-modal-id");
-          if (!flexbe_cli.modal.find(o)) {
-            var s = String(this.ownerId);
-            o = (s && s.split("_")[0]) + "_" + o
-          }
-          flexbe_cli.modal.find(o) ? flexbe_cli.events.emit("modal_command", {
-            command: "open",
-            id: o
-          }) : console.warn("Modal open error:", "There is no window attached to the form.", o)
+          this.$component.html('<h2>Спасибо за вашу заявку!</h2>');
+          setTimeout(function(){
+            flexbe_cli.modal.close();
+          }, 3000);
+          // var o = this.$component.find("[data-modal-id]").attr("data-modal-id");
+          // if (!flexbe_cli.modal.find(o)) {
+          //   var s = String(this.ownerId);
+          //   o = (s && s.split("_")[0]) + "_" + o
+          // }
+          // flexbe_cli.modal.find(o) ? flexbe_cli.events.emit("modal_command", {
+          //   command: "open",
+          //   id: o
+          // }) : console.warn("Modal open error:", "There is no window attached to the form.", o)
         }
       }, t.fileInput = function () {
         this.$component.on("change" + this.eventId, ".file-input", function (e) {

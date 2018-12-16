@@ -227,7 +227,7 @@
                   </div>
                 </div>
                 <div class="value">
-                  <p>&nbsp; &nbsp; &nbsp; 65 &nbsp; &nbsp; &nbsp; &nbsp;м/мин</p>
+                  <p>65 м/мин</p>
                 </div>
                 <div class="name">
                   <p>СКОРОСТЬ РЕЗКИ&nbsp;</p>
@@ -255,7 +255,7 @@
                   </div>
                 </div>
                 <div class="value">
-                  <p>&nbsp; &nbsp; &nbsp; 1000 &nbsp; &nbsp; &nbsp; кг</p>
+                  <p>1000 кг</p>
                 </div>
                 <div class="name">
                   <p>МАКСИМАЛЬНАЯ МАССА ЗАГОТОВКИ&nbsp;</p>
@@ -268,7 +268,7 @@
                   </div>
                 </div>
                 <div class="value">
-                  <p>&nbsp; &nbsp; &nbsp; <s></s>4&nbsp; &nbsp; &nbsp; &nbsp; кВт</p>
+                  <p>4 кВт</p>
                 </div>
                 <div class="name">
                   <p>МОЩНОСТЬ&nbsp;</p>
@@ -562,7 +562,7 @@
             </div>
             <div class="form">
               <div class="component-form style-3 inline" data-style="style-3" data-component="form">
-                <form action="#" method="post" enctype="multipart/form-data"
+                <form action="data/form.php" method="post" enctype="multipart/form-data"
                   novalidate="" data-r7k12="1">
                   <div class="form_fields_user"><input name="type[99999]" value="text" type="hidden"><input name="vars[99999]"
                       value="r7k12id" type="hidden"><input name="form[99999]" value="2362614247" type="hidden"></div>
@@ -777,7 +777,7 @@
                 <p>Оставить заявку на расчет</p>
               </div>
               <div class="component-form style-1 " data-style="style-1" data-component="form">
-                <form action="#" method="post" enctype="multipart/form-data"
+                <form action="data/form.php" method="post" enctype="multipart/form-data"
                   novalidate="" data-r7k12="1">
                   <div class="form_fields_user"><input name="type[99999]" value="text" type="hidden"><input name="vars[99999]"
                       value="r7k12id" type="hidden"><input name="form[99999]" value="2362614247" type="hidden"></div>
@@ -865,70 +865,6 @@
         </div>
       </div>
     </div>
-    <div class="m_modal m_24598_policy" data-is="modal" data-id="24598_policy" data-m-id="99">
-      <div class="modal-data"> <a class="close close-times"></a>
-        <div class="component-bg bg-color " data-type="color" data-parallax="0" data-component="background">
-          <div class="overlay "></div>
-        </div>
-        <div class="scroller" data-overlay="true">
-          <div class="modal-content">
-            <div class="title text-style-strong bold">
-              Политика конфиденциальности
-            </div>
-            <div class="text">
-              <p>Соблюдение Вашей конфиденциальности важно для нас. По этой причине, мы разработали Политику
-                Конфиденциальности, которая описывает, как мы используем и храним Вашу информацию. Пожалуйста,
-                ознакомьтесь с нашими правилами соблюдения конфиденциальности и сообщите нам, если у вас возникнут
-                какие-либо вопросы. </p>
-              <h3> Сбор и использование персональной информации </h3>
-              <p>Под персональной информацией понимаются данные, которые могут быть использованы для идентификации
-                определенного лица либо связи с ним.</p>
-              <p>От вас может быть запрошено предоставление вашей персональной информации в любой момент, когда вы
-                связываетесь с нами.</p>
-              <p>Ниже приведены некоторые примеры типов персональной информации, которую мы можем собирать, и как мы
-                можем использовать такую информацию.</p>
-              <p>Какую персональную информацию мы собираем:</p>
-              <ul>
-                <li>Когда вы оставляете заявку на сайте, мы можем собирать различную информацию, включая ваши имя,
-                  номер телефона, адрес электронной почты и т.д.</li>
-              </ul>
-              <p>Как мы используем вашу персональную информацию:</p>
-              <ul>
-                <li>Собираемая нами персональная информация позволяет нам связываться с вами и сообщать об уникальных
-                  предложениях, акциях и других мероприятиях и ближайших событиях.</li>
-                <li>Время от времени, мы можем использовать вашу персональную информацию для отправки важных
-                  уведомлений и сообщений. </li>
-                <li>Мы также можем использовать персональную информацию для внутренних целей, таких как проведения
-                  аудита, анализа данных и различных исследований в целях улучшения услуг предоставляемых нами и
-                  предоставления Вам рекомендаций относительно наших услуг.</li>
-                <li>Если вы принимаете участие в розыгрыше призов, конкурсе или сходном стимулирующем мероприятии, мы
-                  можем использовать предоставляемую вами информацию для управления такими программами.</li>
-              </ul>
-              <h3>Раскрытие информации третьим лицам</h3>
-              <p>Мы не раскрываем полученную от Вас информацию третьим лицам.</p>
-              <p>Исключения:</p>
-              <ul>
-                <li>В случае если необходимо — в соответствии с законом, судебным порядком, в судебном разбирательстве,
-                  и/или на основании публичных запросов или запросов от государственных органов на территории РФ —
-                  раскрыть вашу персональную информацию. Мы также можем раскрывать информацию о вас если мы определим,
-                  что такое раскрытие необходимо или уместно в целях безопасности, поддержания правопорядка, или иных
-                  общественно важных случаях. </li>
-                <li>В случае реорганизации, слияния или продажи мы можем передать собираемую нами персональную
-                  информацию соответствующему третьему лицу – правопреемнику.</li>
-              </ul>
-              <h3>Защита персональной информации</h3>
-              <p> Мы предпринимаем меры предосторожности — включая административные, технические и физические — для
-                защиты вашей персональной информации от утраты, кражи, и недобросовестного использования, а также от
-                несанкционированного доступа, раскрытия, изменения и уничтожения. </p>
-              <h3>Соблюдение вашей конфиденциальности на уровне компании</h3>
-              <p>Для того чтобы убедиться, что ваша персональная информация находится в безопасности, мы доводим нормы
-                соблюдения конфиденциальности и безопасности до наших сотрудников, и строго следим за исполнением мер
-                соблюдения конфиденциальности.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="m_modal m_form90858" data-is="modal" data-id="form90858" data-m-id="1" data-m-type="['form']">
       <div class="modal-data"> <a class="close close-times"></a>
         <div class="component-bg bg-color " data-type="color" data-parallax="0" data-component="background">
@@ -939,7 +875,7 @@
             <div class="form">
               <div class="form-title text-style-strong bold">Оформить заявку</div>
               <div class="component-form  " data-style="filled" data-component="form">
-                <form action="#" method="post" enctype="multipart/form-data"
+                <form action="data/form.php" method="post" enctype="multipart/form-data"
                   novalidate="" data-r7k12="1">
                   <div class="form_fields_user"><input name="type[99999]" value="text" type="hidden"><input name="vars[99999]"
                       value="r7k12id" type="hidden"><input name="form[99999]" value="2362614247" type="hidden"></div>
